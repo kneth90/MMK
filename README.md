@@ -1,0 +1,2 @@
+# MMK
+Mencoba Mengerti Kodingan
