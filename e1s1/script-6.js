@@ -1,44 +1,28 @@
 /*
-    Materi: Promise
+    Materi: Async await
 
-    promise adalah janji :)
+    fungsi async adalah promise, dimana resolve callbacknya adalah value 
+        yg direturn.
+    Await mereturn hasil yang diresolve sebuah promoise dan menunggu proses tersebut
 */
 
 
-const callback = (par) => {
-    console.log('data ditampilkan, ', par);
+
+const prom = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve('data');
+    }, 2000);
+})
+
+// prom.then((v) => {
+//     console.log(v);
+// })
+
+async function asFunc(){
+    const r = await prom;
+    
+    console.log('hasil fungsi async', r);
 }
 
-// callback, old
-//  anggap setTimeout itu proses pengambilan data ajax 
-// function getData(data, callback){
-//     setTimeout(_ => {
-//         console.log('mengambil data dari db');
-//         callback(data)
-//     }, 2000)
-// }
-// getData(' data2 filter ', callback); 
-
-
-
-// promise
-const prom = new Promise(function(resolve, reject){
-    setTimeout( _ => {
-        resolve("data dari promise");
-    }, 2000)
-});
-const prom2 = new Promise(function(resolve, reject){
-    setTimeout( _ => {
-        resolve("data dari promise 2");
-    }, 2000)
-});
-
-prom.then(function(v){
-  callback(v);  
-})
-
-Promise.all([prom, prom2]).then(function(values){
-    console.log(values);
-})
-
+asFunc();
 
